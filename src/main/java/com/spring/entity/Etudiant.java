@@ -8,9 +8,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
@@ -30,7 +27,7 @@ public class Etudiant {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_e")
-	private Integer id_e ;
+	private Integer Id ;
 	@NotEmpty( message="Please enter the username")
 	@Column(name="username")
 	private String username ;
@@ -44,7 +41,7 @@ public class Etudiant {
 	@NotNull( message="Please enter the phone number")
 	@Column(name="phone")
 	private String phone;
-	
+
 	
 
 }
