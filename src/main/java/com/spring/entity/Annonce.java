@@ -24,7 +24,7 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@ToString
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -37,7 +37,7 @@ public class Annonce {
 	public Annonce(String nom_ecole, float prix, String description, int nb_place, String type, String image_url,
 			Boolean available, String genre, Annonceur annonceur) {
 		super();
-		this.nom_ecole = nom_ecole;
+		this.nomEcole = nom_ecole;
 		this.prix = prix;
 		this.description = description;
 		this.nb_place = nb_place;
@@ -56,7 +56,7 @@ public class Annonce {
 	private Integer Id ;
 	
 	@Column(name="nom_ecole")
-	private String nom_ecole ;
+	private String nomEcole ;
 	
 	@Column(name="prix")
 	private float prix; 
@@ -86,6 +86,13 @@ public class Annonce {
 	 @ManyToOne
 	 @JoinColumn(name = "id_annonceur",insertable =true)
 	private Annonceur annonceur;
+
+	@Override
+	public String toString() {
+		return "Annonce [Id=" + Id + ", nom_ecole=" + nomEcole + ", prix=" + prix + ", description=" + description
+				+ ", nb_place=" + nb_place + ", type=" + type + ", image_url=" + image_url + ", date_ajout="
+				+ date_ajout + ", available=" + available + ", genre=" + genre + ", annonceur=" + annonceur + "]";
+	}
 	
 	
 	

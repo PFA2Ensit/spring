@@ -24,7 +24,6 @@ import net.minidev.json.JSONArray;
 import net.minidev.json.JSONObject;
 @Getter
 @Setter
-
 @AllArgsConstructor
 @NoArgsConstructor
 
@@ -51,9 +50,16 @@ public class Annonceur {
 	private String phone;
 	
 	@OneToMany(cascade=CascadeType.ALL,mappedBy="annonceur")
-    private Set<Annonce>annonce;
+    private Set<Annonce> annonce;
+
+	@Override
+	public String toString() {
+		return "Annonceur [Id=" + Id + ", username=" + username + ", password=" + password + ", email=" + email
+				+ ", phone=" + phone + ", annonce=" + annonce + "]";
+	}
 	
-	 public String toString(){
+	
+	 /*public String toString(){
 		 String info = "";
 	        JSONObject jsonInfo = new JSONObject();
 	        if(this.annonce != null){
@@ -71,7 +77,7 @@ public class Annonceur {
 	       
 	        info = jsonInfo.toString();
 	        return info;
-	    }
+	    }*/
 	    }
 
 

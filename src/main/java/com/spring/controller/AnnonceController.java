@@ -1,7 +1,7 @@
 package com.spring.controller;
 
 import java.util.HashMap;
-
+import java.util.List;
 import java.util.Map;
 
 import javax.persistence.EntityManager;
@@ -19,6 +19,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.spring.entity.Annonce;
@@ -64,7 +67,7 @@ public class AnnonceController {
     	Annonce annonce = annonceRepository.findById(annonceId)
         .orElseThrow(() -> new ResourceNotFoundException("	Add not found for this id :: " + annonceId));
 
-    	annonce.setNom_ecole(annonce.getNom_ecole());
+    	annonce.setNomEcole(annonce.getNomEcole());
     	annonce.setAvailable(annonce.getAvailable());
     	annonce.setNb_place(annonce.getNb_place());
     	annonce.setImage_url(annonce.getImage_url());
@@ -88,5 +91,16 @@ public class AnnonceController {
         response.put("deleted", Boolean.TRUE);
         return response;
     }
-
+    
+    @RequestMapping(value = "/annonces", method = RequestMethod.GET)
+    @ResponseBody
+    List<Annonce> findByPrixAndType(@RequestParam("prix") float prix,@RequestParam("type") String type){
+    	return annonceRepository.findByPrixAndType(prix,type);
+    }
+    
+   /* @RequestMapping(value = "/annonces/{prix}" , method = RequestMethod.GET)
+    public @ResponseBody List<Annonce> getUser(@RequestParam("nom") String nom) {
+        return (List<Annonce>) annonceRepository.Nom_ecole(nom);
+    }
+*/
 }

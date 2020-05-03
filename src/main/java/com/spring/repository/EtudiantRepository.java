@@ -12,4 +12,6 @@ import com.spring.entity.Etudiant;
 @CrossOrigin(origins = "http://localhost:4200")
 public interface EtudiantRepository extends JpaRepository <Etudiant, Integer>{
 
+	Etudiant findEtudiantByEmail(String email);
+
 }
