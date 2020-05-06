@@ -1,8 +1,10 @@
 package com.spring.pfa2;
 
 import java.util.Arrays;
+
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -35,7 +37,7 @@ import com.spring.repository.EtudiantRepository;
 @ComponentScan(basePackageClasses = {EtudiantRepository.class})
 @EntityScan(basePackageClasses = {Etudiant.class})
 @EnableJpaRepositories(basePackageClasses = {EtudiantRepository.class})
-public class Pfa2Application {
+public class Pfa2Application /*implements CommandLineRunner*/{
 	@Autowired
 	private AnnonceurRepository rep;
 	@Autowired
@@ -48,13 +50,14 @@ public class Pfa2Application {
 
 	/*@Override
 	public void run(String... args) throws Exception {
-		 saveData("a@a.com");
+		saveData("a@a.com");
 		showData();
 	}
 	 @Transactional
 	    private void saveData(String email){
 		 Annonceur owner = rep.findByEmail(email);
-		 Annonce a = new Annonce("Ensit",120,"hhhhhh",2,"Foyer","dar.png",true,"fille",owner);
+		 System.out.println(owner.getId());
+		 Annonce a = new Annonce("Isamm",250,"hdydyd",1,"Foyer","ensit.png",true,"garçon",owner);
 		 repann.save(a);
 	    }
 	
@@ -62,10 +65,9 @@ public class Pfa2Application {
     private void showData() {
 		
 		 
-		List<Annonce> productLst = repann.findAll();
+		Optional<Annonce> productLst = repann.findById(39);
 		 System.out.println("===================Annonce List:==================");
-		 productLst.forEach(System.out::println);
-	         
+	         System.out.println(productLst);
 	}
 	*/
 	/*@Bean

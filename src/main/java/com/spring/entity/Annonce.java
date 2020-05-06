@@ -21,6 +21,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import net.minidev.json.JSONObject;
 
 @Getter
 @Setter
@@ -40,7 +41,7 @@ public class Annonce {
 		this.nomEcole = nom_ecole;
 		this.prix = prix;
 		this.description = description;
-		this.nb_place = nb_place;
+		this.capacite = nb_place;
 		this.type = type;
 		this.image_url = image_url;
 		this.available = available;
@@ -53,7 +54,7 @@ public class Annonce {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_annonce")
-	private Integer Id ;
+	private Integer id ;
 	
 	@Column(name="nom_ecole")
 	private String nomEcole ;
@@ -65,7 +66,7 @@ public class Annonce {
 	private String description ;
 	
 	@Column(name="nb_place")
-	private int nb_place;
+	private int capacite;
 	
 	@Column(name="type")
 	private String type;
@@ -88,11 +89,24 @@ public class Annonce {
 	private Annonceur annonceur;
 
 	@Override
-	public String toString() {
+	/*public String toString() {
 		return "Annonce [Id=" + Id + ", nom_ecole=" + nomEcole + ", prix=" + prix + ", description=" + description
 				+ ", nb_place=" + nb_place + ", type=" + type + ", image_url=" + image_url + ", date_ajout="
 				+ date_ajout + ", available=" + available + ", genre=" + genre + ", annonceur=" + annonceur + "]";
-	}
+	}*/
+	 public String toString(){
+	      String info = "";
+	      
+	        JSONObject jsonInfo = new JSONObject();
+	        jsonInfo.put("name",this.nomEcole);
+	        
+	        JSONObject companyObj = new JSONObject();
+	        companyObj.put("id ann", this.annonceur.getId());
+	        jsonInfo.put("annonceur", companyObj);
+	        
+	        info = jsonInfo.toString();
+	        return info;
+	    }
 	
 	
 	

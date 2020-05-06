@@ -51,15 +51,15 @@ public class AnnonceController {
         return ResponseEntity.ok().body(annonce);
     }
     
-    @PostMapping("/annonces")
+    /*@PostMapping("/annonces")
     public Annonce createAnnonce(@Valid @RequestBody Annonce annonce,@Valid @RequestBody String email) {
     	
-		 //Annonceur owner = rep.findByEmail(email);
+		// Annonceur owner = rep.findByEmail(email);
     	//Annonceur owner = entityManager.getReference(Annonceur.class, annonceur.getId());
       //Annonceur a=rep.getOne(annonce.getId());
-    	 //annonce.setAnnonceur(owner);
+    	//annonce.setAnnonceur(owner);
          return annonceRepository.save(annonce);
-    }
+    }*/
 
     @PutMapping("/annonces/{id}")
     public ResponseEntity<Annonce> updateAnnonce(@PathVariable(value = "id") Integer annonceId,
@@ -69,7 +69,7 @@ public class AnnonceController {
 
     	annonce.setNomEcole(annonce.getNomEcole());
     	annonce.setAvailable(annonce.getAvailable());
-    	annonce.setNb_place(annonce.getNb_place());
+    	annonce.setCapacite(annonce.getCapacite());
     	annonce.setImage_url(annonce.getImage_url());
     	annonce.setPrix(annonce.getPrix());
     	annonce.setType(annonce.getType());
@@ -92,11 +92,7 @@ public class AnnonceController {
         return response;
     }
     
-    @RequestMapping(value = "/annonces", method = RequestMethod.GET)
-    @ResponseBody
-    List<Annonce> findByPrixAndType(@RequestParam("prix") float prix,@RequestParam("type") String type){
-    	return annonceRepository.findByPrixAndType(prix,type);
-    }
+    
     
    /* @RequestMapping(value = "/annonces/{prix}" , method = RequestMethod.GET)
     public @ResponseBody List<Annonce> getUser(@RequestParam("nom") String nom) {
