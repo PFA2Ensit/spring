@@ -33,7 +33,7 @@ import com.spring.repository.AnnonceurRepository;
 import com.spring.repository.EtudiantRepository;
 @Configuration
 @SpringBootApplication(exclude = {SecurityAutoConfiguration.class },scanBasePackages={
-		"com.spring.service","com.spring.controller"})
+		"com.spring.service","com.spring.controller","com.spring.config"})
 @ComponentScan(basePackageClasses = {EtudiantRepository.class})
 @EntityScan(basePackageClasses = {Etudiant.class})
 @EnableJpaRepositories(basePackageClasses = {EtudiantRepository.class})
@@ -57,7 +57,7 @@ public class Pfa2Application /*implements CommandLineRunner*/{
 	    private void saveData(String email){
 		 Annonceur owner = rep.findByEmail(email);
 		 System.out.println(owner.getId());
-		 Annonce a = new Annonce("Isamm",250,"hdydyd",1,"Foyer","ensit.png",true,"garçon",owner);
+		 Annonce a = new Annonce("Isi",450,"new",2,"Foyer","isi.png",true,"fille",owner);
 		 repann.save(a);
 	    }
 	
@@ -65,11 +65,11 @@ public class Pfa2Application /*implements CommandLineRunner*/{
     private void showData() {
 		
 		 
-		Optional<Annonce> productLst = repann.findById(39);
+		Optional<Annonce> productLst = repann.findById(49);
 		 System.out.println("===================Annonce List:==================");
 	         System.out.println(productLst);
-	}
-	*/
+	}*/
+	
 	/*@Bean
 	public WebMvcConfigurer corsConfigurer() {
 		return new WebMvcConfigurer() {

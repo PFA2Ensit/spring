@@ -23,8 +23,7 @@ import lombok.Setter;
 import lombok.ToString;
 import net.minidev.json.JSONObject;
 
-@Getter
-@Setter
+
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -54,7 +53,7 @@ public class Annonce {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_annonce")
-	private Integer id ;
+	private Integer Id ;
 	
 	@Column(name="nom_ecole")
 	private String nomEcole ;
@@ -76,7 +75,7 @@ public class Annonce {
 	private String image_url;
 	
 	@Column(name="date_ajout")
-	private Date date_ajout;
+	private Date dateAjout = new Date();
 	
 	@Column(name="available")
 	private Boolean available;
@@ -87,6 +86,8 @@ public class Annonce {
 	 @ManyToOne
 	 @JoinColumn(name = "id_annonceur",insertable =true)
 	private Annonceur annonceur;
+	 
+	 
 
 	@Override
 	/*public String toString() {
@@ -107,6 +108,138 @@ public class Annonce {
 	        info = jsonInfo.toString();
 	        return info;
 	    }
+
+
+
+	public Integer getId() {
+		return Id;
+	}
+
+
+
+	public void setId(Integer id) {
+		this.Id = id;
+	}
+
+
+
+	public String getNomEcole() {
+		return nomEcole;
+	}
+
+
+
+	public void setNomEcole(String nomEcole) {
+		this.nomEcole = nomEcole;
+	}
+
+
+
+	public float getPrix() {
+		return prix;
+	}
+
+
+
+	public void setPrix(float prix) {
+		this.prix = prix;
+	}
+
+
+
+	public String getDescription() {
+		return description;
+	}
+
+
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+
+
+	public int getCapacite() {
+		return capacite;
+	}
+
+
+
+	public void setCapacite(int capacite) {
+		this.capacite = capacite;
+	}
+
+
+
+	public String getType() {
+		return type;
+	}
+
+
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+
+
+	public String getImage_url() {
+		return image_url;
+	}
+
+
+
+	public void setImage_url(String image_url) {
+		this.image_url = image_url;
+	}
+
+
+
+	public Date getDate_ajout() {
+		return dateAjout;
+	}
+
+
+
+	public void setDate_ajout(Date date_ajout) {
+		this.dateAjout = date_ajout;
+	}
+
+
+
+	public Boolean getAvailable() {
+		return available;
+	}
+
+
+
+	public void setAvailable(Boolean available) {
+		this.available = available;
+	}
+
+
+
+	public String getGenre() {
+		return genre;
+	}
+
+
+
+	public void setGenre(String genre) {
+		this.genre = genre;
+	}
+
+
+
+	public Annonceur getAnnonceur() {
+		return annonceur;
+	}
+
+
+
+	public void setAnnonceur(Annonceur annonceur) {
+		this.annonceur = annonceur;
+	}
 	
 	
 	

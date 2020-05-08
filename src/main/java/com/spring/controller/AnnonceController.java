@@ -51,15 +51,15 @@ public class AnnonceController {
         return ResponseEntity.ok().body(annonce);
     }
     
-    /*@PostMapping("/annonces")
+    @PostMapping("/annonces")
     public Annonce createAnnonce(@Valid @RequestBody Annonce annonce,@Valid @RequestBody String email) {
     	
-		// Annonceur owner = rep.findByEmail(email);
+		Annonceur owner = rep.findByEmail(email);
     	//Annonceur owner = entityManager.getReference(Annonceur.class, annonceur.getId());
       //Annonceur a=rep.getOne(annonce.getId());
-    	//annonce.setAnnonceur(owner);
+    	annonce.setAnnonceur(owner);
          return annonceRepository.save(annonce);
-    }*/
+    }
 
     @PutMapping("/annonces/{id}")
     public ResponseEntity<Annonce> updateAnnonce(@PathVariable(value = "id") Integer annonceId,

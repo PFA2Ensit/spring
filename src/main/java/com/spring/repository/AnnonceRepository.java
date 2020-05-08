@@ -20,17 +20,17 @@ public interface AnnonceRepository extends JpaRepository<Annonce,Integer> {
 	List<Annonce>findAllByAnnonceur(Integer id);
 	
 	@RestResource(path="searchBox")
-	Page<Annonce> findByNomEcoleAndTypeAndCapacite(@Param("nom") String nom,@Param("type")String type,@Param("nombre") int nombre,Pageable pagebale);
+	Page<Annonce> findByNomEcoleAndTypeAndCapaciteAndAvailableTrue(@Param("nom") String nom,@Param("type")String type,@Param("nombre") int nombre,Pageable pagebale);
 	@RestResource(path="name")
-	Page<Annonce> findByNomEcole(@Param("nom") String name, Pageable pagebale);
+	Page<Annonce> findByNomEcoleAndAvailableTrue(@Param("nom") String name, Pageable pagebale);
 	@RestResource(path="tri")
-	Page<Annonce> findFirst10ByOrderByIdDesc(Pageable pagebale);
+	Page<Annonce> findFirst6ByAndAvailableTrueOrderByDateAjoutDesc(Pageable pagebale);
 	
 	@RestResource(path="prixD")
-	Page<Annonce> findByOrderByPrixDesc(Pageable pagebale);
+	Page<Annonce> findByNomEcoleAndTypeAndCapaciteAndAvailableTrueOrderByPrixDesc(@Param("nom") String nom,@Param("type")String type,@Param("nombre") int nombre,Pageable pagebale);
 	
 	@RestResource(path="prixA")
-	Page<Annonce> findByOrderByPrixAsc(Pageable pagebale);
+	Page<Annonce> findByNomEcoleAndTypeAndCapaciteAndAvailableTrueOrderByPrixAsc(@Param("nom") String nom,@Param("type")String type,@Param("nombre") int nombre,Pageable pagebale);
 	
 	@RestResource(path="count")
 	@Query("select count(e) from Annonce e ")
